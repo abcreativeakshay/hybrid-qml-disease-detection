@@ -12,7 +12,6 @@ import os
 import sys
 import json
 import numpy as np
-import torch
 import joblib
 import streamlit as st
 import plotly.graph_objects as go
@@ -24,12 +23,9 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from datetime import datetime
 
-# Project imports
+# Project imports (lightweight; heavy deps like torch/pennylane are loaded lazily)
 from src.data.loader import load_default_dataset, load_csv_dataset
 from src.data.preprocessing import preprocess, transform_new_data
-from src.models.classical import get_classical_models
-from src.models.quantum_vqc import HybridVQC
-from src.models.quantum_kernel import QuantumKernelSVM
 from src.evaluation.metrics import compute_metrics, compute_metrics_at_threshold, time_inference
 from src.evaluation.explainability import (
     permutation_importance, draw_quantum_circuit, draw_kernel_circuit,
@@ -231,6 +227,18 @@ def load_precomputed_results():
     }
 
 
+@st.cache_resource
+def cached_vqc_circuit(n_qubits, n_layers):
+    """Render the VQC circuit figure once and cache it (avoids re-drawing on every rerun)."""
+    return draw_quantum_circuit(n_qubits=n_qubits, n_layers=n_layers)
+
+
+@st.cache_resource
+def cached_kernel_circuit(n_qubits):
+    """Render the QSVM kernel circuit figure once and cache it."""
+    return draw_kernel_circuit(n_qubits=n_qubits)
+
+
 def get_risk_band(probability):
     """Map probability to risk band."""
     if probability < 0.3:
@@ -397,6 +405,10 @@ except Exception as e:
 # ────────────────────────────────────────────────────
 def train_all_models(processed_data, n_qubits, n_layers, vqc_epochs, qsvm_subsample):
     """Train all models and return results dict."""
+    from src.models.classical import get_classical_models
+    from src.models.quantum_vqc import HybridVQC
+    from src.models.quantum_kernel import QuantumKernelSVM
+
     X_train = processed_data['X_train']
     X_test = processed_data['X_test']
     y_train = processed_data['y_train']
@@ -788,17 +800,15 @@ if user_role == "Researcher":
             
             with circ_col1:
                 try:
-                    fig_vqc = draw_quantum_circuit(n_qubits=n_qubits, n_layers=n_layers)
+                    fig_vqc = cached_vqc_circuit(n_qubits=n_qubits, n_layers=n_layers)
                     st.pyplot(fig_vqc)
-                    plt.close(fig_vqc)
                 except Exception as e:
                     st.warning(f"Could not render VQC circuit: {e}")
             
             with circ_col2:
                 try:
-                    fig_kern = draw_kernel_circuit(n_qubits=n_qubits)
+                    fig_kern = cached_kernel_circuit(n_qubits=n_qubits)
                     st.pyplot(fig_kern)
-                    plt.close(fig_kern)
                 except Exception as e:
                     st.warning(f"Could not render kernel circuit: {e}")
 
@@ -1261,16 +1271,14 @@ if user_role == "Researcher":
                 
                 if is_quantum and ('VQC' in explain_model or 'Quantum VQC' == explain_model):
                     try:
-                        fig_circuit = draw_quantum_circuit(n_qubits=n_qubits, n_layers=n_layers)
+                        fig_circuit = cached_vqc_circuit(n_qubits=n_qubits, n_layers=n_layers)
                         st.pyplot(fig_circuit)
-                        plt.close(fig_circuit)
                     except Exception as e:
                         st.warning(f"Could not render circuit: {e}")
                 elif is_quantum and ('QSVM' in explain_model or 'Kernel' in explain_model):
                     try:
-                        fig_circuit = draw_kernel_circuit(n_qubits=n_qubits)
+                        fig_circuit = cached_kernel_circuit(n_qubits=n_qubits)
                         st.pyplot(fig_circuit)
-                        plt.close(fig_circuit)
                     except Exception as e:
                         st.warning(f"Could not render circuit: {e}")
                 else:

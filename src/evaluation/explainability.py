@@ -10,7 +10,6 @@ import numpy as np
 import matplotlib
 matplotlib.use('Agg')  # Non-interactive backend for Streamlit
 import matplotlib.pyplot as plt
-import pennylane as qml
 from sklearn.metrics import accuracy_score
 
 
@@ -279,6 +278,8 @@ def draw_quantum_circuit(n_qubits=5, n_layers=2):
     Returns:
         matplotlib.figure.Figure: The circuit diagram
     """
+    import pennylane as qml
+    
     dev = qml.device("default.qubit", wires=n_qubits)
     
     @qml.qnode(dev)
@@ -309,6 +310,8 @@ def draw_kernel_circuit(n_qubits=5):
     Returns:
         matplotlib.figure.Figure: The circuit diagram
     """
+    import pennylane as qml
+    
     dev = qml.device("default.qubit", wires=n_qubits)
     
     @qml.qnode(dev)
