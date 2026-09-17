@@ -40,7 +40,7 @@ def create_vqc_model(n_qubits=5, n_layers=2, seed=42):
     # Quantum device
     dev = qml.device("lightning.qubit", wires=n_qubits)
     
-    @qml.qnode(dev, interface="torch", diff_method="backprop")
+    @qml.qnode(dev, interface="torch", diff_method="adjoint")
     def circuit(inputs, weights):
         qml.AngleEmbedding(inputs, wires=range(n_qubits), rotation='Y')
         qml.StronglyEntanglingLayers(weights, wires=range(n_qubits))
