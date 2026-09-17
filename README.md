@@ -10,9 +10,13 @@ pinned: false
 
 # 🧬 Hybrid Quantum-Classical ML Platform for Early Disease Detection
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://hybrid-qml-disease-detection.streamlit.app)
+
 **SIH26139 — Problem Statement 3: Hybrid Quantum Machine Learning Platform for Early Disease Detection**
 
 A comprehensive platform that benchmarks quantum-enhanced machine learning models against classical baselines for binary disease classification. Built with PennyLane, PyTorch, scikit-learn, and Streamlit.
+
+> **Live demo:** deploy this repo to [Streamlit Cloud](https://share.streamlit.io/) — no training required (Quick Demo Mode loads pre-computed results instantly).
 
 ---
 
