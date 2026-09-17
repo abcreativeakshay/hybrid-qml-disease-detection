@@ -351,7 +351,7 @@ with st.sidebar:
     # Train button (only in live mode, Researcher role)
     train_clicked = False
     if not demo_mode and user_role == "Researcher":
-        train_clicked = st.button("🚀 Train All Models", type="primary", use_container_width=True)
+        train_clicked = st.button("🚀 Train All Models", type="primary", width='stretch')
     
     st.divider()
     st.markdown(
@@ -649,7 +649,7 @@ if user_role == "Researcher":
                 xaxis_title="Class",
                 yaxis_title="Count",
             )
-            st.plotly_chart(fig_class, use_container_width=True)
+            st.plotly_chart(fig_class, width='stretch')
         
         with col_right:
             st.markdown("#### PCA Explained Variance")
@@ -679,12 +679,12 @@ if user_role == "Researcher":
                 yaxis_title="Variance Explained (%)",
                 showlegend=True,
             )
-            st.plotly_chart(fig_pca, use_container_width=True)
+            st.plotly_chart(fig_pca, width='stretch')
         
         # Feature stats
         st.markdown("#### Feature Statistics (Top 10)")
         df_stats = pd.DataFrame(X_raw[:, :10], columns=feature_names[:10])
-        st.dataframe(df_stats.describe().round(3), use_container_width=True)
+        st.dataframe(df_stats.describe().round(3), width='stretch')
         
         # Correlation heatmap of PCA features
         st.markdown("#### PCA Feature Correlation")
@@ -702,7 +702,7 @@ if user_role == "Researcher":
             height=400,
             margin=dict(t=30, b=30),
         )
-        st.plotly_chart(fig_corr, use_container_width=True)
+        st.plotly_chart(fig_corr, width='stretch')
 
 
     # ═══════════════════════════════════════════════════
@@ -761,7 +761,7 @@ if user_role == "Researcher":
                     xaxis_title="Epoch",
                     yaxis_title="BCE Loss",
                 )
-                st.plotly_chart(fig_loss, use_container_width=True)
+                st.plotly_chart(fig_loss, width='stretch')
             
             # Model architecture info
             col_vqc, col_qsvm = st.columns(2)
@@ -856,7 +856,7 @@ if user_role == "Researcher":
                     'Specificity': '{:.3f}', 'F1': '{:.3f}', 'ROC-AUC': '{:.3f}',
                     'Train Time': '{:.3f}s'
                 })
-                st.dataframe(styled, use_container_width=True, hide_index=True)
+                st.dataframe(styled, width='stretch', hide_index=True)
                 
                 st.markdown("<br>", unsafe_allow_html=True)
                 
@@ -888,7 +888,7 @@ if user_role == "Researcher":
                         legend=dict(orientation='h', y=-0.15),
                         yaxis_range=[0, 1.05],
                     )
-                    st.plotly_chart(fig_bar, use_container_width=True)
+                    st.plotly_chart(fig_bar, width='stretch')
                 
                 with col_roc:
                     st.markdown("#### 📈 ROC Curves")
@@ -926,7 +926,7 @@ if user_role == "Researcher":
                         yaxis_title='True Positive Rate',
                         legend=dict(orientation='h', y=-0.2),
                     )
-                    st.plotly_chart(fig_roc, use_container_width=True)
+                    st.plotly_chart(fig_roc, width='stretch')
                 
                 # Training time comparison
                 st.markdown("#### ⏱️ Training Time Comparison")
@@ -948,7 +948,7 @@ if user_role == "Researcher":
                     yaxis_title='Time (seconds)',
                     yaxis_type='log',
                 )
-                st.plotly_chart(fig_time, use_container_width=True)
+                st.plotly_chart(fig_time, width='stretch')
 
 
     # ═══════════════════════════════════════════════════
@@ -1056,7 +1056,7 @@ if user_role == "Researcher":
                             yaxis_title='Actual',
                             yaxis=dict(autorange='reversed'),
                         )
-                        st.plotly_chart(fig_cm, use_container_width=True)
+                        st.plotly_chart(fig_cm, width='stretch')
                     
                     with dist_col:
                         st.markdown("#### Probability Distribution")
@@ -1086,7 +1086,7 @@ if user_role == "Researcher":
                             xaxis_title='Predicted Probability',
                             yaxis_title='Count',
                         )
-                        st.plotly_chart(fig_dist, use_container_width=True)
+                        st.plotly_chart(fig_dist, width='stretch')
                     
                     # Single patient result
                     st.markdown("#### 🧑‍⚕️ Patient Risk Assessment")
@@ -1186,7 +1186,7 @@ if user_role == "Researcher":
                         margin=dict(t=30, b=30, l=80),
                         xaxis_title='Mean Accuracy Decrease',
                     )
-                    st.plotly_chart(fig_imp, use_container_width=True)
+                    st.plotly_chart(fig_imp, width='stretch')
                     
                     st.caption(
                         "**Permutation importance** measures how much accuracy drops when a feature "
@@ -1221,7 +1221,7 @@ if user_role == "Researcher":
                                 margin=dict(t=30, b=30, l=80),
                                 xaxis_title='Mean |ΔProbability|',
                             )
-                            st.plotly_chart(fig_sens, use_container_width=True)
+                            st.plotly_chart(fig_sens, width='stretch')
                             
                             st.caption(
                                 "**Quantum parameter sensitivity** measures how much the output "
@@ -1255,7 +1255,7 @@ if user_role == "Researcher":
                                 margin=dict(t=30, b=30, l=80),
                                 xaxis_title='Mean |SHAP Value|',
                             )
-                            st.plotly_chart(fig_shap, use_container_width=True)
+                            st.plotly_chart(fig_shap, width='stretch')
                             
                             st.caption(
                                 "**SHAP (SHapley Additive exPlanations)** assigns each feature a "
@@ -1503,7 +1503,7 @@ elif user_role == "Admin":
             })
         
         df_status = pd.DataFrame(model_status)
-        st.dataframe(df_status, use_container_width=True, hide_index=True)
+        st.dataframe(df_status, width='stretch', hide_index=True)
     
     st.markdown("---")
     

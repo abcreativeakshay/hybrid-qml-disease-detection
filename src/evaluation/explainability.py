@@ -295,7 +295,7 @@ def draw_quantum_circuit(n_qubits=5, n_layers=2):
     fig, ax = qml.draw_mpl(circuit, style="pennylane")(dummy_inputs, dummy_weights)
     fig.set_size_inches(12, max(3, n_qubits * 0.8))
     fig.suptitle("Variational Quantum Circuit (VQC)", fontsize=14, fontweight='bold')
-    plt.tight_layout()
+    # plt.tight_layout()  # Removed to suppress Streamlit/Matplotlib warnings
     
     return fig
 
@@ -326,6 +326,6 @@ def draw_kernel_circuit(n_qubits=5):
     fig, ax = qml.draw_mpl(kernel_circuit, style="pennylane")(dummy_x1, dummy_x2)
     fig.set_size_inches(10, max(3, n_qubits * 0.8))
     fig.suptitle("Quantum Fidelity Kernel Circuit (QSVM)", fontsize=14, fontweight='bold')
-    plt.tight_layout()
+    # plt.tight_layout()  # Removed to suppress Streamlit/Matplotlib warnings
     
     return fig
