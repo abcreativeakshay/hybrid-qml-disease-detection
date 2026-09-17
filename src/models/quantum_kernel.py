@@ -26,7 +26,7 @@ def create_kernel_circuit(n_qubits=5):
         callable: kernel function k(x1, x2) → float in [0, 1]
         qml.QNode: The underlying circuit (for visualization)
     """
-    dev = qml.device("default.qubit", wires=n_qubits)
+    dev = qml.device("lightning.qubit", wires=n_qubits)
     
     @qml.qnode(dev)
     def kernel_circuit(x1, x2):
@@ -107,6 +107,24 @@ class QuantumKernelSVM:
         # Stored for prediction
         self.X_train_sub = None
         self.K_train = None
+        
+        # Cache for test predictions to avoid redundant recomputation
+        self._last_X_test_hash = None
+        self._last_K_test = None
+    
+    def _get_K_test(self, X_test):
+        """Helper to get K_test with simple caching."""
+        # Simple hash using bytes of the array
+        x_hash = hash(X_test.tobytes())
+        if self._last_X_test_hash == x_hash and self._last_K_test is not None:
+            return self._last_K_test
+            
+        X_test_scaled = self.feature_scaler.transform(X_test)
+        K_test = compute_kernel_matrix(X_test_scaled, self.X_train_sub, self.kernel_fn)
+        
+        self._last_X_test_hash = x_hash
+        self._last_K_test = K_test
+        return K_test
     
     def fit(self, X_train, y_train, progress_callback=None):
         """
@@ -161,8 +179,7 @@ class QuantumKernelSVM:
     
     def predict(self, X_test):
         """Return class predictions for test data."""
-        X_test_scaled = self.feature_scaler.transform(X_test)
-        K_test = compute_kernel_matrix(X_test_scaled, self.X_train_sub, self.kernel_fn)
+        K_test = self._get_K_test(X_test)
         return self.svm.predict(K_test)
     
     def predict_proba(self, X_test):
@@ -171,8 +188,7 @@ class QuantumKernelSVM:
         This avoids the expensive internal CV that SVC(probability=True) requires
         with precomputed kernels.
         """
-        X_test_scaled = self.feature_scaler.transform(X_test)
-        K_test = compute_kernel_matrix(X_test_scaled, self.X_train_sub, self.kernel_fn)
+        K_test = self._get_K_test(X_test)
         decision = self.svm.decision_function(K_test)
         # Sigmoid transform for probability estimates
         proba_1 = 1.0 / (1.0 + np.exp(-decision))

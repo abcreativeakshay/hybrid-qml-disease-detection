@@ -38,7 +38,7 @@ def create_vqc_model(n_qubits=5, n_layers=2, seed=42):
     _set_seeds(seed)
     
     # Quantum device
-    dev = qml.device("default.qubit", wires=n_qubits)
+    dev = qml.device("lightning.qubit", wires=n_qubits)
     
     @qml.qnode(dev, interface="torch", diff_method="backprop")
     def circuit(inputs, weights):

@@ -280,7 +280,7 @@ def draw_quantum_circuit(n_qubits=5, n_layers=2):
     """
     import pennylane as qml
     
-    dev = qml.device("default.qubit", wires=n_qubits)
+    dev = qml.device("lightning.qubit", wires=n_qubits)
     
     @qml.qnode(dev)
     def circuit(inputs, weights):
@@ -312,7 +312,7 @@ def draw_kernel_circuit(n_qubits=5):
     """
     import pennylane as qml
     
-    dev = qml.device("default.qubit", wires=n_qubits)
+    dev = qml.device("lightning.qubit", wires=n_qubits)
     
     @qml.qnode(dev)
     def kernel_circuit(x1, x2):
