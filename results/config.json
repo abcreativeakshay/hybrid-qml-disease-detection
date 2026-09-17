@@ -1,0 +1,9 @@
+{
+  "n_qubits": 5,
+  "n_layers": 2,
+  "vqc_epochs": 30,
+  "vqc_lr": 0.01,
+  "qsvm_subsample": 100,
+  "test_size": 0.2,
+  "random_state": 42
+}

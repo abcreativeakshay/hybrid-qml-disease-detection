@@ -1,0 +1,11 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+pennylane==0.45.1
+torch==2.14.0
+scikit-learn==1.7.2
+streamlit==1.51.0
+plotly==6.3.0
+matplotlib==3.10.6
+pandas==2.3.3
+numpy==2.3.5
+joblib==1.5.2
+shap==0.52.0
