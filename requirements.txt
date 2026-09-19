@@ -1,6 +1,6 @@
 --extra-index-url https://download.pytorch.org/whl/cpu
 pennylane==0.45.1
-torch==2.14.0+cpu
+torch==2.14.0
 scikit-learn==1.7.2
 streamlit==1.52.0
 pyarrow==25.0.1
@@ -11,3 +11,5 @@ numpy==2.3.5
 joblib==1.5.2
 starlette==1.6.0
 shap==0.44.1
+pydicom==3.0.2
+biopython==1.88

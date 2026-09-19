@@ -1,0 +1,467 @@
+{
+    "metrics": {
+        "Logistic Regression": {
+            "accuracy": 0.5,
+            "precision": 0.5,
+            "recall": 0.25,
+            "sensitivity": 0.25,
+            "specificity": 0.75,
+            "f1": 0.3333333333333333,
+            "confusion_matrix": [
+                [
+                    3,
+                    1
+                ],
+                [
+                    3,
+                    1
+                ]
+            ],
+            "tp": 1,
+            "tn": 3,
+            "fp": 1,
+            "fn": 3,
+            "roc_auc": 0.4375
+        },
+        "Random Forest": {
+            "accuracy": 0.875,
+            "precision": 0.8,
+            "recall": 1.0,
+            "sensitivity": 1.0,
+            "specificity": 0.75,
+            "f1": 0.8888888888888888,
+            "confusion_matrix": [
+                [
+                    3,
+                    1
+                ],
+                [
+                    0,
+                    4
+                ]
+            ],
+            "tp": 4,
+            "tn": 3,
+            "fp": 1,
+            "fn": 0,
+            "roc_auc": 0.75
+        },
+        "SVM (RBF)": {
+            "accuracy": 0.875,
+            "precision": 0.8,
+            "recall": 1.0,
+            "sensitivity": 1.0,
+            "specificity": 0.75,
+            "f1": 0.8888888888888888,
+            "confusion_matrix": [
+                [
+                    3,
+                    1
+                ],
+                [
+                    0,
+                    4
+                ]
+            ],
+            "tp": 4,
+            "tn": 3,
+            "fp": 1,
+            "fn": 0,
+            "roc_auc": 0.875
+        },
+        "Quantum VQC": {
+            "accuracy": 0.75,
+            "precision": 0.75,
+            "recall": 0.75,
+            "sensitivity": 0.75,
+            "specificity": 0.75,
+            "f1": 0.75,
+            "confusion_matrix": [
+                [
+                    3,
+                    1
+                ],
+                [
+                    1,
+                    3
+                ]
+            ],
+            "tp": 3,
+            "tn": 3,
+            "fp": 1,
+            "fn": 1,
+            "roc_auc": 0.875
+        },
+        "Quantum SVM (QSVM)": {
+            "accuracy": 0.875,
+            "precision": 0.8,
+            "recall": 1.0,
+            "sensitivity": 1.0,
+            "specificity": 0.75,
+            "f1": 0.8888888888888888,
+            "confusion_matrix": [
+                [
+                    3,
+                    1
+                ],
+                [
+                    0,
+                    4
+                ]
+            ],
+            "tp": 4,
+            "tn": 3,
+            "fp": 1,
+            "fn": 0,
+            "roc_auc": 0.875
+        }
+    },
+    "predictions": {
+        "Logistic Regression": [
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "Random Forest": [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1,
+            0,
+            1
+        ],
+        "SVM (RBF)": [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1,
+            0,
+            1
+        ],
+        "Quantum VQC": [
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1
+        ],
+        "Quantum SVM (QSVM)": [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1,
+            0,
+            1
+        ]
+    },
+    "probabilities": {
+        "Logistic Regression": [
+            0.8033723950690884,
+            0.4381548775635384,
+            0.9036336614716337,
+            0.2646475398719829,
+            0.061562443781983944,
+            0.20164130770247396,
+            0.313995630422256,
+            0.2792027993355596
+        ],
+        "Random Forest": [
+            0.9183333333333333,
+            0.2857142857142857,
+            0.895,
+            0.56,
+            0.267,
+            0.54,
+            0.25,
+            0.6920000000000001
+        ],
+        "SVM (RBF)": [
+            0.6747270109418928,
+            0.42328773631525585,
+            0.7444028282114722,
+            0.6753663097814591,
+            0.39128574166562735,
+            0.6563918174043079,
+            0.37334279323887093,
+            0.5496876852817498
+        ],
+        "Quantum VQC": [
+            0.5211798548698425,
+            0.47204214334487915,
+            0.585967481136322,
+            0.5443342924118042,
+            0.4363272488117218,
+            0.4896758198738098,
+            0.443651407957077,
+            0.5050323009490967
+        ],
+        "Quantum SVM (QSVM)": [
+            0.6680393247223294,
+            0.33131823338478744,
+            0.7670289433030238,
+            0.6864523742083394,
+            0.293150380131949,
+            0.6663351762734684,
+            0.27320885095757474,
+            0.5178103218422426
+        ]
+    },
+    "train_times": {
+        "Logistic Regression": 0.0007050037384033203,
+        "Random Forest": 0.04431772232055664,
+        "SVM (RBF)": 0.0004189014434814453,
+        "Quantum VQC": 1.2847349643707275,
+        "Quantum SVM (QSVM)": 0.06998229026794434
+    },
+    "inference_times": {
+        "Logistic Regression": 1.9598007202148438e-05,
+        "Random Forest": 0.001691722869873047,
+        "SVM (RBF)": 7.28607177734375e-05,
+        "Quantum VQC": 0.008288240432739258,
+        "Quantum SVM (QSVM)": 2.2792816162109374e-05
+    },
+    "permutation_importance": {
+        "Logistic Regression": [
+            {
+                "feature": "PC1",
+                "importance_mean": 0.1125,
+                "importance_std": 0.0375
+            },
+            {
+                "feature": "PC3",
+                "importance_mean": 0.0125,
+                "importance_std": 0.10383279828647594
+            },
+            {
+                "feature": "PC4",
+                "importance_mean": -0.0125,
+                "importance_std": 0.08750000000000001
+            },
+            {
+                "feature": "PC2",
+                "importance_mean": -0.0875,
+                "importance_std": 0.1125
+            },
+            {
+                "feature": "PC5",
+                "importance_mean": -0.1,
+                "importance_std": 0.15612494995995996
+            }
+        ],
+        "Random Forest": [
+            {
+                "feature": "PC4",
+                "importance_mean": 0.1875,
+                "importance_std": 0.10077822185373188
+            },
+            {
+                "feature": "PC2",
+                "importance_mean": 0.175,
+                "importance_std": 0.082915619758885
+            },
+            {
+                "feature": "PC3",
+                "importance_mean": 0.1,
+                "importance_std": 0.07500000000000001
+            },
+            {
+                "feature": "PC5",
+                "importance_mean": 0.075,
+                "importance_std": 0.11456439237389598
+            },
+            {
+                "feature": "PC1",
+                "importance_mean": 0.0,
+                "importance_std": 0.0
+            }
+        ],
+        "SVM (RBF)": [
+            {
+                "feature": "PC4",
+                "importance_mean": 0.275,
+                "importance_std": 0.1457737973711325
+            },
+            {
+                "feature": "PC3",
+                "importance_mean": 0.125,
+                "importance_std": 0.0
+            },
+            {
+                "feature": "PC2",
+                "importance_mean": 0.075,
+                "importance_std": 0.11456439237389601
+            },
+            {
+                "feature": "PC1",
+                "importance_mean": 0.025,
+                "importance_std": 0.05000000000000001
+            },
+            {
+                "feature": "PC5",
+                "importance_mean": 0.025,
+                "importance_std": 0.07500000000000001
+            }
+        ],
+        "Quantum VQC": [
+            {
+                "feature": "PC4",
+                "importance_mean": 0.2125,
+                "importance_std": 0.09762812094883319
+            },
+            {
+                "feature": "PC3",
+                "importance_mean": 0.1375,
+                "importance_std": 0.0375
+            },
+            {
+                "feature": "PC2",
+                "importance_mean": 0.025,
+                "importance_std": 0.07500000000000001
+            },
+            {
+                "feature": "PC1",
+                "importance_mean": 0.0125,
+                "importance_std": 0.037500000000000006
+            },
+            {
+                "feature": "PC5",
+                "importance_mean": -0.075,
+                "importance_std": 0.11456439237389601
+            }
+        ],
+        "Quantum SVM (QSVM)": [
+            {
+                "feature": "PC4",
+                "importance_mean": 0.275,
+                "importance_std": 0.1457737973711325
+            },
+            {
+                "feature": "PC3",
+                "importance_mean": 0.125,
+                "importance_std": 0.0
+            },
+            {
+                "feature": "PC2",
+                "importance_mean": 0.1125,
+                "importance_std": 0.10383279828647594
+            },
+            {
+                "feature": "PC1",
+                "importance_mean": 0.0625,
+                "importance_std": 0.0625
+            },
+            {
+                "feature": "PC5",
+                "importance_mean": -0.0125,
+                "importance_std": 0.06731456008918131
+            }
+        ]
+    },
+    "shap_importance": {
+        "Logistic Regression": [],
+        "Random Forest": [],
+        "SVM (RBF)": []
+    },
+    "quantum_sensitivity": {
+        "Quantum VQC": [
+            {
+                "feature": "PC4",
+                "sensitivity_mean": 0.0034100469201803207,
+                "sensitivity_std": 0.0021621580235660076
+            },
+            {
+                "feature": "PC5",
+                "sensitivity_mean": 0.002951648086309433,
+                "sensitivity_std": 0.002234472893178463
+            },
+            {
+                "feature": "PC2",
+                "sensitivity_mean": 0.0019225813448429108,
+                "sensitivity_std": 0.0018209023401141167
+            },
+            {
+                "feature": "PC3",
+                "sensitivity_mean": 0.0013585351407527924,
+                "sensitivity_std": 0.0006467881612479687
+            },
+            {
+                "feature": "PC1",
+                "sensitivity_mean": 0.0010965075343847275,
+                "sensitivity_std": 0.0007680112612433732
+            }
+        ],
+        "Quantum SVM (QSVM)": [
+            {
+                "feature": "PC5",
+                "sensitivity_mean": 0.008045853264014673,
+                "sensitivity_std": 0.0033501827253218973
+            },
+            {
+                "feature": "PC4",
+                "sensitivity_mean": 0.007655421524571129,
+                "sensitivity_std": 0.004375332808199196
+            },
+            {
+                "feature": "PC2",
+                "sensitivity_mean": 0.005745535608538261,
+                "sensitivity_std": 0.004526803231836908
+            },
+            {
+                "feature": "PC3",
+                "sensitivity_mean": 0.00418017149167688,
+                "sensitivity_std": 0.004250111728169618
+            },
+            {
+                "feature": "PC1",
+                "sensitivity_mean": 0.003169712088517646,
+                "sensitivity_std": 0.002064923944291685
+            }
+        ]
+    },
+    "vqc_loss_history": [
+        0.6953709125518799,
+        0.6940258741378784,
+        0.6927684545516968,
+        0.6915581226348877,
+        0.6903432607650757,
+        0.6890946626663208,
+        0.6877949237823486,
+        0.6864297389984131,
+        0.684985876083374,
+        0.6834515333175659,
+        0.6818176507949829,
+        0.6800775527954102,
+        0.6782268285751343,
+        0.6762630939483643,
+        0.6741864681243896,
+        0.6719986796379089,
+        0.6697011590003967,
+        0.6672922372817993,
+        0.6647652387619019,
+        0.6621070504188538,
+        0.6593013405799866,
+        0.656334400177002,
+        0.6531996726989746,
+        0.6498984098434448,
+        0.6464386582374573,
+        0.6428335905075073,
+        0.6390999555587769,
+        0.6352571249008179,
+        0.6313261985778809,
+        0.627331018447876
+    ]
+}

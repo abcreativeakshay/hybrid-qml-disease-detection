@@ -4,17 +4,31 @@ Dressed quantum circuit: Linear → Tanh → AngleEmbedding → StronglyEntangli
 Uses PennyLane's TorchLayer for end-to-end differentiable training with PyTorch.
 """
 
+import os
 import time
 import numpy as np
+
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["MKL_NUM_THREADS"] = "1"
+
 import torch
 import torch.nn as nn
 import pennylane as qml
+
+try:
+    torch.set_num_threads(1)
+except Exception:
+    pass
 
 
 def _set_seeds(seed=42):
     """Fix all random seeds for reproducibility."""
     np.random.seed(seed)
     torch.manual_seed(seed)
+    try:
+        torch.set_num_threads(1)
+    except Exception:
+        pass
 
 
 def create_vqc_model(n_qubits=5, n_layers=2, seed=42):
